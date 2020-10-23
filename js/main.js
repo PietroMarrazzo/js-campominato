@@ -3,6 +3,7 @@
 var difficult = 5;
 var maxMine = 1;
 var slots = difficult - maxMine;
+console.log(slots);
 var valoriMine = [];
 
 // generatore array mine
@@ -47,9 +48,9 @@ do {
     var numero = parseInt(prompt('Inserisci un valore compreso tra 1 e ' + difficult).toLowerCase().trim());
     var result = comparazione(numero, valoriMine);
     counter++;
-} while (result != 'bomba' || counter)
+} while (result != 'bomba' || counter <= slots);
 
-
+console.log(counter, numero, result);
 
 
 
