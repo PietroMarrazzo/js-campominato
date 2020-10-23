@@ -48,7 +48,7 @@ do {
     var numero = parseInt(prompt('Inserisci un valore compreso tra 1 e ' + difficult).toLowerCase().trim());
     var result = comparazione(numero, valoriMine);
     counter++;
-} while (result != 'bomba' || counter <= slots);
+} while (result == 'vuoto' && counter < slots);
 
 console.log(counter, numero, result);
 
