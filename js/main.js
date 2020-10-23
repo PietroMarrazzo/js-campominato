@@ -1,6 +1,19 @@
 // generazione 16 mine, numeri casuali intervallo 1-100, compresi
 // var scelta = ['hard', 'normal', 'easy'];
-var difficult = 100;
+var difficult = 0;
+var scelta = prompt('Ciao! Dimmi a che difficoltà vorresti giocare: Hard (20 slots), Normal (80 slots) o Easy(100 slots)?').toLowerCase().trim();
+switch (scelta) {
+    case 'hard':
+        difficult = 20;
+        break;
+    case 'normal':
+        difficult = 80;
+        break;
+    case 'easy':
+        difficult = 100;
+        break;
+}
+
 var maxMine = 16;
 var slots = difficult - maxMine;
 console.log(slots);
@@ -53,19 +66,19 @@ do {
     
     var result = comparazione(numero, valoriMine);
     counter++;
-} while (result == 'vuoto' && counter < slots);
+} while (result == 'vuoto' && counter < slots && maxMine > numero > 1);
 
 var score = counter - 1;
 
 if (result == 'bomba') {
     console.log('Hai trovato una bomba! il tuo score è ' + score);
-} else  {
+} else if (numero > 100 || numero < 1) {
+    console.log('Hai giocato sporco, riprova!');
+} else {
     console.log('Hai trovato tutti gli slot liberi!');
 }
 
 // console.log(counter, numero, result);
-
-
 
 
 
