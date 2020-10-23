@@ -1,9 +1,21 @@
 // generazione 16 mine, numeri casuali intervallo 1-100, compresi
 // var scelta = ['hard', 'normal', 'easy'];
 var difficult = 100;
+var scelta = prompt('Ciao! Dimmi a che difficoltà vorresti giocare: Hard (20 slots), Normal (80 slots) o Easy(100 slots)?').toLowerCase().trim();
+switch (scelta) {
+    case 'hard':
+        difficult = 20;
+        break;
+    case 'normal':
+        difficult = 80;
+        break;
+    case 'easy':
+        difficult = 100;
+        break;
+}
 var maxMine = 16;
 var slots = difficult - maxMine;
-console.log(slots);
+console.log(slots, difficult);
 var valoriMine = [];
 var valoriGiocatore = [];
 
