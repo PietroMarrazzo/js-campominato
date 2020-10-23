@@ -1,10 +1,11 @@
 // generazione 16 mine, numeri casuali intervallo 1-100, compresi
 // var scelta = ['hard', 'normal', 'easy'];
-var difficult = 5;
-var maxMine = 1;
+var difficult = 100;
+var maxMine = 16;
 var slots = difficult - maxMine;
 console.log(slots);
 var valoriMine = [];
+var valoriGiocatore = [];
 
 // generatore array mine
 do {
@@ -42,15 +43,27 @@ console.log(valoriMine);
 
 // console.log('Premi F5 per ricominciare a giocare');
 
-
+var control = 0;
 var counter = 0;
 do {
     var numero = parseInt(prompt('Inserisci un valore compreso tra 1 e ' + difficult).toLowerCase().trim());
+    do {
+        control = controlloNumero(numero, valoriGiocatore);
+    } while (control == 1)
+    
     var result = comparazione(numero, valoriMine);
     counter++;
 } while (result == 'vuoto' && counter < slots);
 
-console.log(counter, numero, result);
+var score = counter - 1;
+
+if (result == 'bomba') {
+    console.log('Hai trovato una bomba! il tuo score è ' + score);
+} else  {
+    console.log('Hai trovato tutti gli slot liberi!');
+}
+
+// console.log(counter, numero, result);
 
 
 
@@ -76,3 +89,15 @@ function comparazione(numGiocatore, array) {
 }
 
 
+// funzione controllo numero inserito
+function controlloNumero(numGiocatore, array) {
+    if (! array.includes(numGiocatore)) {
+        array.push(numGiocatore);
+        control = 0;
+    }    
+    else {
+        numero = parseInt(prompt('Hai già inserito questo valore, inseriscine uno differente').toLowerCase().trim());
+        control = 1;
+    }
+    return control;
+}
