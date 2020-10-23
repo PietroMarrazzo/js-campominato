@@ -17,25 +17,42 @@ console.log(valoriMine);
 
 
 // ciclo gioco
-var result = '';
+// var result = 0;
+// var counter = 0;
+// do {
+//     // inserimento numero
+//     var numero = parseInt(prompt('Inserisci un valore compreso tra 1 e ' + difficult));
+
+//     // verifica se numero = a mina
+//     if (valoriMine.includes(numero)) {
+//         result = 1;
+//         console.log('Hai trovato una bomba, hai perso!');
+//     }
+//     counter = counter + 1;
+   
+// } while (result = 1 || counter == slots);
+
+// if (counter = slots) {
+//     console.log('Hai trovato tutti gli slot liberi, hai vinto!!!');
+//     console.log(counter);
+// } else {
+//     console.log('Il tuo score è di ' + counter + ' slot liberi trovati');
+// }
+
+// console.log('Premi F5 per ricominciare a giocare');
+
+
 var counter = 0;
 do {
-    var numero = parseInt(prompt('Inserisci un valore compreso tra 1 e ' + difficult));
-    if (valoriMine.includes(numero)) {
-        result = 'bomba';
-        // console.log('Hai trovato una bomba, hai perso!');
-    }
+    var numero = parseInt(prompt('Inserisci un valore compreso tra 1 e ' + difficult).toLowerCase().trim());
+    var result = comparazione(numero, valoriMine);
     counter++;
-   
-} while (result != 'bomba' || counter < slots);
+} while (result != 'bomba' || counter)
 
-if (counter = slots) {
-    console.log('Hai trovato tutti gli slot liberi, hai vinto!!!');
-} else {
-    console.log('Il tuo score è di ' + counter + ' slot liberi trovati');
-}
 
-console.log('Premi F5 per ricominciare a giocare');
+
+
+
 
 
 
@@ -48,5 +65,13 @@ function generaMine(min, max) {
     }
 }
 
+// funzione comparazione mine e numero
+function comparazione(numGiocatore, array) {
+    if (array.includes(numGiocatore)) {
+        return 'bomba';
+    } 
+    return 'vuoto';
+
+}
 
 
